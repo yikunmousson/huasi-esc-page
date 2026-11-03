@@ -110,6 +110,10 @@
     inset:0 auto auto 0;width:1440px;height:900px;
     transform-origin:0 0;
   }
+  /* 内嵌「AlN 陶瓷加热器」页：无外框，页面内置 1600×900 等比自适应 */
+  .embed-heater{
+    border:0;border-radius:0;box-shadow:none;background:transparent;overflow:hidden;
+  }
   figcaption{margin-top:10px;font-size:13px;color:var(--muted);text-align:center}
   figcaption .en{display:block;font-size:12px}
   figcaption .ipa{display:block;font-size:11px;font-family:Georgia,serif;font-style:italic}
@@ -466,8 +470,10 @@
   </div>
 
   <figure>
-    <img src="assets/page-16.jpg" alt="Heater 结构分解图">
-    <figcaption>Heater 结构分解图<span class="en">Heater Structure Diagram /ˈdaɪəɡræm/</span></figcaption>
+    <div class="embed-wrap embed-heater">
+      <iframe src="aln-heater/index.html" title="氮化铝陶瓷加热器结构（中英双语）" loading="lazy"></iframe>
+    </div>
+    <figcaption>氮化铝陶瓷加热器结构<span class="en">AlN Ceramic Heater — 氮化铝 Aluminum Nitride /əˈluːmɪnəm ˈnaɪtraɪd/ · 热导率 Thermal Conductivity /ˈθɜːml ˌkɒndʌkˈtɪvəti/ · 加热线圈 Heat Coil /hiːt kɔɪl/ · 射频网 RF Mesh /meʃ/</span></figcaption>
   </figure>
   <figure>
     <img src="assets/page-17.jpg" alt="Heater 产品实物图">
