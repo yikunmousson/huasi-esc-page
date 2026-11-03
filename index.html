@@ -94,6 +94,18 @@
   .ok{color:var(--ok)} .no-x{color:var(--no)} .na{color:var(--na);font-weight:600}
   figure{margin:22px 0}
   figure img{width:100%;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);display:block}
+  /* 内嵌整页（结构图谱） */
+  .embed-wrap{
+    position:relative;width:100%;aspect-ratio:16/9;
+    border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;background:#dce4ea;
+  }
+  .embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .embed-link{
+    display:inline-block;margin-top:8px;font-size:12.5px;font-weight:600;color:var(--accent);
+    text-decoration:none;border-bottom:1px dashed var(--accent-2);
+  }
+  .embed-link:hover{color:var(--accent-2)}
   figcaption{margin-top:10px;font-size:13px;color:var(--muted);text-align:center}
   figcaption .en{display:block;font-size:12px}
   figcaption .ipa{display:block;font-size:11px;font-family:Georgia,serif;font-style:italic}
@@ -236,8 +248,10 @@
   </div>
 
   <figure>
-    <img src="assets/page-04.jpg" alt="Hydra ESC 结构示意（Top View / Bottom View）">
-    <figcaption>Hydra ESC 结构示意<span class="en">Hydra ESC Structure — 含顶视图 Top View /tɒp vjuː/、底视图 Bottom View /ˈbɒtəm vjuː/、升降针孔 Lift Pin Hole、氦气孔 He (Helium) Hole /ˈhiːliəm həʊl/、直流孔 DC Hole、冷却液孔 Coolant Hole /ˈkuːlənt həʊl/、热电偶孔 TC (Thermocouple) Hole /ˈθɜːməʊkʌpl/、Corvus Pin、ring / rib / dimple 凹点 /ˈdɪmpl/</span></figcaption>
+    <div class="embed-wrap">
+      <iframe src="hydra-esc/index.html" title="Hydra ESC 结构图谱（中英双语，点击局部可放大）" loading="lazy"></iframe>
+    </div>
+    <figcaption>Hydra ESC 结构图谱（可交互，点击局部放大）<span class="en">Hydra ESC Structure Atlas — 顶视图 Top View /tɒp vjuː/ · 底视图 Bottom View /ˈbɒtəm vjuː/ · 盘面局部 Surface Details /ˈsɜːfɪs ˈdiːteɪlz/ · 底部接口 Bottom Interfaces /ˈbɒtəm ˈɪntəfeɪsɪz/</span><a class="embed-link" href="hydra-esc/index.html" target="_blank" rel="noopener">全屏打开 Open Full Page ↗</a></figcaption>
   </figure>
 
   <figure>
