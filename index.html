@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合肥华思电子 · 半导体零部件产品介绍 | ESC / MCA / Heater / RF / Lamp</title>
+<style>
+  :root{
+    --ink:#1a2332;
+    --ink-2:#4a5568;
+    --muted:#8a94a6;
+    --accent:#0e5aa7;
+    --accent-2:#1273c4;
+    --accent-soft:#e8f1fb;
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --line:#e3e8ef;
+    --ok:#0f8a4d;
+    --no:#c0392b;
+    --na:#95a5a6;
+    --radius:14px;
+    --shadow:0 1px 3px rgba(16,35,61,.06),0 8px 24px rgba(16,35,61,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.65;
+  }
+  .hero{
+    background:linear-gradient(135deg,#0b2545 0%,#0e5aa7 60%,#1273c4 100%);
+    color:#fff;padding:56px 24px 72px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 85% 20%,rgba(255,255,255,.10) 0,transparent 40%),
+      radial-gradient(circle at 10% 90%,rgba(255,255,255,.07) 0,transparent 45%);
+    pointer-events:none;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+  .hero .kicker{letter-spacing:.35em;font-size:13px;opacity:.85;text-transform:uppercase}
+  .hero h1{font-size:clamp(26px,4vw,40px);font-weight:700;margin:14px 0 6px}
+  .hero .sub-en{font-size:clamp(14px,2vw,18px);opacity:.85;font-weight:400}
+  .hero .sub-ipa{font-size:13px;opacity:.65;font-family:Georgia,serif;font-style:italic;margin-top:2px}
+  .hero .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+  .hero .meta span{
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+    padding:6px 14px;border-radius:999px;font-size:13px;backdrop-filter:blur(4px);
+  }
+  nav{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  }
+  nav ul{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2px;list-style:none;padding:8px 16px}
+  nav a{
+    text-decoration:none;color:var(--ink-2);font-size:13.5px;font-weight:600;
+    padding:7px 13px;border-radius:8px;transition:.15s;white-space:nowrap;
+  }
+  nav a:hover{background:var(--accent-soft);color:var(--accent)}
+  main{max-width:1080px;margin:0 auto;padding:0 20px 90px}
+  section{margin-top:64px;scroll-margin-top:70px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:3px solid var(--accent);padding-bottom:12px;margin-bottom:26px;flex-wrap:wrap}
+  .sec-head .no{
+    font-size:30px;font-weight:800;color:transparent;
+    -webkit-text-stroke:1.6px var(--accent);line-height:1;
+  }
+  .sec-head h2{font-size:25px;color:var(--ink)}
+  .sec-head .en{font-size:15px;color:var(--muted);font-weight:500}
+  .sec-head .ipa{font-size:12.5px;color:var(--muted);font-family:Georgia,serif;font-style:italic}
+  h3.block-title{font-size:19px;margin:38px 0 14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+  h3.block-title::before{content:"";width:5px;height:20px;background:var(--accent-2);border-radius:3px;align-self:center}
+  h3.block-title .en{font-size:13.5px;color:var(--muted);font-weight:500}
+  h3.block-title .ipa{font-size:12px;color:var(--muted);font-family:Georgia,serif;font-style:italic}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:820px){.grid-2,.grid-3{grid-template-columns:1fr}}
+  /* 双语术语：中文在上 / 英文在下 / 音标再下 */
+  .term{
+    display:inline-flex;flex-direction:column;vertical-align:middle;
+    background:var(--accent-soft);border:1px solid #cfe2f5;border-radius:10px;
+    padding:6px 12px;margin:3px 4px 3px 0;transition:.15s;
+  }
+  .term:hover{border-color:var(--accent-2);box-shadow:0 3px 10px rgba(18,115,196,.15)}
+  .term .zh{font-size:15px;font-weight:700;color:var(--ink);line-height:1.4}
+  .term .en{font-size:12.5px;font-weight:600;color:var(--accent);line-height:1.4}
+  .term .ipa{font-size:11px;color:var(--muted);font-family:Georgia,"Times New Roman",serif;font-style:italic;line-height:1.4}
+  .term.lg{padding:10px 16px}
+  .term.lg .zh{font-size:17px}
+  .term.lg .en{font-size:14px}
+  .term.lg .ipa{font-size:12.5px}
+  .term-card{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;box-shadow:var(--shadow);text-align:center;
+  }
+  .term-card .zh{font-size:16px;font-weight:700}
+  .term-card .en{font-size:13.5px;font-weight:600;color:var(--accent);margin-top:2px}
+  .term-card .ipa{font-size:12px;color:var(--muted);font-family:Georgia,serif;font-style:italic;margin-top:1px}
+  .tbl-wrap{overflow-x:auto;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);background:var(--card)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:640px}
+  thead th{
+    background:linear-gradient(180deg,#123f6e,#0e5aa7);color:#fff;font-weight:600;
+    padding:11px 12px;text-align:left;white-space:nowrap;
+  }
+  thead th .en{display:block;font-size:11px;font-weight:500;opacity:.85}
+  thead th .ipa{display:block;font-size:10px;font-weight:400;opacity:.7;font-family:Georgia,serif;font-style:italic}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tbody tr:nth-child(even){background:#f8fafd}
+  tbody tr:hover{background:var(--accent-soft)}
+  td .zh{display:block;font-weight:600}
+  td .en{display:block;font-size:11.5px;color:var(--ink-2)}
+  td .ipa{display:block;font-size:10.5px;color:var(--muted);font-family:Georgia,serif;font-style:italic}
+  .mark{text-align:center;font-weight:800}
+  .ok{color:var(--ok)} .no-x{color:var(--no)} .na{color:var(--na);font-weight:600}
+  figure{margin:22px 0}
+  figure img{width:100%;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);display:block}
+  figcaption{margin-top:10px;font-size:13px;color:var(--muted);text-align:center}
+  figcaption .en{display:block;font-size:12px}
+  figcaption .ipa{display:block;font-size:11px;font-family:Georgia,serif;font-style:italic}
+  ul.dots{list-style:none}
+  ul.dots li{padding:5px 0 5px 22px;position:relative}
+  ul.dots li::before{content:"";position:absolute;left:4px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--accent-2)}
+  .tag{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:12.5px;color:var(--ink-2);margin:3px 4px 3px 0}
+  .callout{
+    background:#fff8ec;border:1px solid #f3e3c0;border-left:4px solid #e0a437;
+    border-radius:10px;padding:14px 18px;font-size:14px;color:#6b5620;margin-top:14px;
+  }
+  .footer-note{margin-top:80px;text-align:center;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:24px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">HEFEI HUASI ELECTRONIC TECHNOLOGY CO., LTD</div>
+    <h1>半导体零部件 · 产品与服务介绍</h1>
+    <div class="sub-en">Semiconductor Spare Parts — Products &amp; Services</div>
+    <div class="sub-ipa">/ˌsemɪkənˈdʌktə spɛə pɑːts ˈprɒdʌkts ənd ˈsɜːvɪsɪz/</div>
+    <div class="meta">
+      <span>资料版本 2026-05 · V4（2026-10-19 更新）</span>
+      <span>合肥华思电子科技有限公司</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#business">业务分类</a></li>
+    <li><a href="#esc">ESC 静电卡盘</a></li>
+    <li><a href="#mca">MCA 卡盘</a></li>
+    <li><a href="#heater">Heater 加热器</a></li>
+    <li><a href="#rf">RF 射频</a></li>
+    <li><a href="#lamp">Lamp 灯泡</a></li>
+    <li><a href="#others">其他零部件</a></li>
+    <li><a href="#glossary">术语表</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- 01 业务分类 -->
+<section id="business">
+  <div class="sec-head">
+    <span class="no">01</span>
+    <h2>业务分类和主要产品</h2>
+    <span class="en">Business Categories &amp; Main Products</span>
+    <span class="ipa">/ˈbɪznəs ˌkætəɡəriz ənd meɪn ˈprɒdʌkts/</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:56px">序号<span class="en">No.</span><span class="ipa">/ˈnʌmbə/</span></th>
+          <th>产品类型<span class="en">Product Type</span><span class="ipa">/ˈprɒdʌktaɪp/</span></th>
+          <th>业务类型<span class="en">Business Type</span><span class="ipa">/ˈbɪznəstaɪp/</span></th>
+          <th>适用工艺<span class="en">Applicable Process</span><span class="ipa">/ˈæplɪkəbl ˈprəʊses/</span></th>
+          <th>客户类型<span class="en">Customer Type</span><span class="ipa">/ˈkʌstəmətaɪp/</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="3">1</td>
+          <td rowspan="3"><span class="zh">ESC 静电卡盘</span><span class="en">Electrostatic Chuck (ESC)</span><span class="ipa">/ɪˌlektrəʊˈstætɪk tʃʌk/</span></td>
+          <td>原厂新品贸易</td>
+          <td><span class="zh">刻蚀 · 薄膜沉积 · 离子注入</span><span class="en">Etch · Thin Film Deposition · Ion Implantation</span><span class="ipa">/etʃ ˌdepəˈzɪʃn ˈaɪən ˌɪmplɑːnˈteɪʃn/</span></td>
+          <td>Fab（晶圆厂）、贸易商</td>
+        </tr>
+        <tr><td>仿制新品</td><td>—</td><td>国内设备厂</td></tr>
+        <tr><td><span class="zh">维修业务 / 检测业务</span><span class="en">Repair / Inspection</span><span class="ipa">/rɪˈpeə ɪnˈspekʃn/</span></td><td>—</td><td>Fab、国内设备厂 / Fab、贸易商</td></tr>
+        <tr>
+          <td rowspan="2">2</td>
+          <td rowspan="2"><span class="zh">MCA 卡盘</span><span class="en">MCA Chuck</span><span class="ipa">/tʃʌk/</span></td>
+          <td>原厂新品贸易 / 仿制新品 / 维修业务</td>
+          <td><span class="zh">薄膜沉积</span><span class="en">Thin Film Deposition</span><span class="ipa">/ˌdepəˈzɪʃn/</span></td>
+          <td>Fab、贸易商 / 国内设备厂</td>
+        </tr>
+        <tr><td colspan="3" style="color:var(--muted)">其余产品（Heater / Shower Head / RF / Lamp / 其他零部件）详见下文各节</td></tr>
+        <tr>
+          <td>3</td>
+          <td><span class="zh">Heater 氧化铝加热盘</span><span class="en">Alumina Heater Plate</span><span class="ipa">/əˈluːmɪnə ˈhiːtə pleɪt/</span></td>
+          <td>原厂新品贸易 / 仿制新品</td>
+          <td><span class="zh">化学气相沉积</span><span class="en">Chemical Vapor Deposition (CVD)</span><span class="ipa">/ˈkemɪkl ˈveɪpə ˌdepəˈzɪʃn/</span></td>
+          <td>Fab、贸易商 / 国内设备厂</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="zh">Shower Head 匀气盘</span><span class="en">Shower Head</span><span class="ipa">/ˈʃaʊə hed/</span></td>
+          <td>原厂新品 / 仿制新品</td>
+          <td>薄膜沉积</td>
+          <td>Fab、贸易商 / 国内设备厂</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="zh">RF 射频</span><span class="en">Radio Frequency (RF)</span><span class="ipa">/ˈreɪdiəʊ ˈfriːkwənsi/</span></td>
+          <td>维修业务</td>
+          <td>刻蚀 · 化学气相沉积 · 扩散（Diffusion /dɪˈfjuːʒn/）</td>
+          <td>Fab</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="zh">Lamp 灯泡</span><span class="en">Lamp</span><span class="ipa">/læmp/</span></td>
+          <td>原厂新品 / 仿制新品</td>
+          <td><span class="zh">回火（RTP）· 量测</span><span class="en">Rapid Thermal Processing · Metrology</span><span class="ipa">/ˈræpɪd ˈθɜːml ˈprəʊsesɪŋ məˈtrɒlədʒi/</span></td>
+          <td>Fab</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="zh">其他零部件</span><span class="en">Other Spare Parts</span><span class="ipa">/ˈʌðə spɛə pɑːts/</span></td>
+          <td>原厂新品贸易 / 仿制新品</td>
+          <td>全工艺，不限</td>
+          <td>Fab、贸易商、国内设备厂</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-3" style="margin-top:20px">
+    <div class="term-card"><div class="zh">晶圆厂</div><div class="en">Fab (Fabrication Plant)</div><div class="ipa">/fæb ˌfæbrɪˈkeɪʃn plɑːnt/</div></div>
+    <div class="term-card"><div class="zh">贸易商</div><div class="en">Trader</div><div class="ipa">/ˈtreɪdə/</div></div>
+    <div class="term-card"><div class="zh">国内设备厂</div><div class="en">Domestic Equipment Maker</div><div class="ipa">/dəˈmestɪk ɪˈkwɪpmənt ˈmeɪkə/</div></div>
+  </div>
+</section>
+
+<!-- 02 ESC -->
+<section id="esc">
+  <div class="sec-head">
+    <span class="no">02</span>
+    <h2>ESC 静电卡盘 产品介绍</h2>
+    <span class="en">Electrostatic Chuck (ESC)</span>
+    <span class="ipa">/ɪˌlektrəʊˈstætɪk tʃʌk/</span>
+  </div>
+
+  <h3 class="block-title">产品规格 <span class="en">Specifications — LAM 885/887 ESC</span><span class="ipa">/ˌspesɪfɪˈkeɪʃnz/</span></h3>
+  <div class="tbl-wrap">
+    <table style="min-width:520px">
+      <thead>
+        <tr><th>项目<span class="en">Item</span><span class="ipa">/ˈaɪtəm/</span></th><th>规格<span class="en">Specification</span><span class="ipa">/ˌspesɪfɪˈkeɪʃn/</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="zh">介质材料</span><span class="en">Dielectric Material</span><span class="ipa">/ˌdaɪɪˈlektrɪk məˈtɪəriəl/</span></td><td>Al₂O₃ 氧化铝（Alumina /əˈluːmɪnə/），纯度（Purity /ˈpjʊərəti/）&gt; 96%</td></tr>
+        <tr><td><span class="zh">盘面颜色</span><span class="en">Plate Color</span><span class="ipa">/pleɪt ˈkʌlə/</span></td><td>白色（White /waɪt/）</td></tr>
+        <tr><td><span class="zh">接触方式</span><span class="en">Contact</span><span class="ipa">/ˈkɒntækt/</span></td><td><span class="zh">压纹凸点</span><span class="en">Embossing</span><span class="ipa">/ɪmˈbɒsɪŋ/</span></td></tr>
+        <tr><td><span class="zh">吸附类型</span><span class="en">Chucking Type</span><span class="ipa">/ˈtʃʌkɪŋ taɪp/</span></td><td><span class="zh">库仑式 · 双极型</span><span class="en">Coulombic, Bi-Polar</span><span class="ipa">/kuːˈlɒmbɪk baɪ ˈpəʊlə/</span></td></tr>
+        <tr><td><span class="zh">基体处理</span><span class="en">Body</span><span class="ipa">/ˈbɒdi/</span></td><td><span class="zh">阳极氧化</span><span class="en">Anodizing</span><span class="ipa">/ˈænədaɪzɪŋ/</span></td></tr>
+        <tr><td><span class="zh">温区与加热器</span><span class="en">Zones / Heater</span><span class="ipa">/zəʊnz ˈhiːtə/</span></td><td>144-Zone，Hydra 4-Zone Heater（四区加热器）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure>
+    <img src="assets/page-04.jpg" alt="Hydra ESC 结构示意（Top View / Bottom View）">
+    <figcaption>Hydra ESC 结构示意<span class="en">Hydra ESC Structure — 含顶视图 Top View /tɒp vjuː/、底视图 Bottom View /ˈbɒtəm vjuː/、升降针孔 Lift Pin Hole、氦气孔 He (Helium) Hole /ˈhiːliəm həʊl/、直流孔 DC Hole、冷却液孔 Coolant Hole /ˈkuːlənt həʊl/、热电偶孔 TC (Thermocouple) Hole /ˈθɜːməʊkʌpl/、Corvus Pin、ring / rib / dimple 凹点 /ˈdɪmpl/</span></figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/page-05.jpg" alt="Hydra ESC 维修">
+    <figcaption>Hydra ESC 维修<span class="en">Hydra ESC Repair /rɪˈpeə/</span></figcaption>
+  </figure>
+
+  <h3 class="block-title">维修能力总览 <span class="en">ESC / Heater Repair Capability</span><span class="ipa">/ˌkæpəˈbɪləti/</span></h3>
+  <figure>
+    <img src="assets/page-06.jpg" alt="ESC/Heater 维修机型覆盖图">
+    <figcaption>覆盖机型：LAM 300 / 400 / 500 / 600 / 800 系列、AMAT G3.9/5 · Sym3 · Black Hawk · ALN/Coating、TEL DRM · SCCM · RK 系列、Anodizing ESC、<span class="zh">聚酰亚胺 ESC</span><span class="en">Polyimide ESC</span><span class="ipa">/ˌpɒliˈɪmaɪd/</span></figcaption>
+  </figure>
+
+  <h3 class="block-title">维修等级与常见问题 <span class="en">Repair Levels &amp; Common Issues</span><span class="ipa">/ˈlevlz ənd ˈkɒmən ˈɪʃuːz/</span></h3>
+  <div class="grid-2">
+    <div class="tbl-wrap" style="box-shadow:none">
+      <table style="min-width:auto">
+        <thead>
+          <tr>
+            <th>等级<span class="en">Level</span><span class="ipa">/ˈlevl/</span></th>
+            <th>内容<span class="en">Content</span><span class="ipa">/ˈkɒntent/</span></th>
+            <th class="mark">Plate</th><th class="mark">Bonder</th><th class="mark">Metal Heater</th><th class="mark">Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Lv.1</td><td><span class="zh">表面处理</span><span class="en">Surface Treatment</span><span class="ipa">/ˈsɜːfɪs ˈtriːtmənt/</span></td><td class="mark na">Re-Used</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td></tr>
+          <tr><td>Lv.2</td><td><span class="zh">重新粘接</span><span class="en">Re-bonding</span><span class="ipa">/ˌriː ˈbɒndɪŋ/</span></td><td class="mark na">Re-Used</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td></tr>
+          <tr><td>Lv.3</td><td><span class="zh">更换新陶瓷盘</span><span class="en">Change New Plate</span><span class="ipa">/tʃeɪndʒ njuː pleɪt/</span></td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td></tr>
+          <tr><td>Lv.4</td><td><span class="zh">更换金属加热器</span><span class="en">Change Metal Heater</span><span class="ipa">/tʃeɪndʒ ˈmetl ˈhiːtə/</span></td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark no-x">✕</td></tr>
+          <tr><td>Lv.5</td><td><span class="zh">二次新品</span><span class="en">2nd New</span><span class="ipa">/ˈsekənd njuː/</span></td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <p style="font-weight:700;margin-bottom:8px">常见问题 <span style="font-weight:500;color:var(--muted)">Common Issues</span></p>
+      <ul class="dots">
+        <li><span class="zh">背压氦气泄漏</span><span class="en">Backside Helium Leak</span><span class="ipa">/ˈbæksaɪd ˈhiːliəm liːk/</span></li>
+        <li><span class="zh">温度均匀度超规格</span><span class="en">Temperature Uniformity Out of Spec</span><span class="ipa">/ˈtemprətʃə ˌjuːnɪˈfɔːməti/</span></li>
+        <li><span class="zh">晶圆吸附变差</span><span class="en">Wafer Chucking Degradation</span><span class="ipa">/ˈweɪfə ˈtʃʌkɪŋ ˌdeɡrəˈdeɪʃn/</span></li>
+        <li><span class="zh">表面污染</span><span class="en">Surface Contamination</span><span class="ipa">/kənˌtæmɪˈneɪʃn/</span></li>
+        <li><span class="zh">加热器感应失效</span><span class="en">Heater Sensing Failure</span><span class="ipa">/ˈsensɪŋ ˈfeɪljə/</span></li>
+        <li><span class="zh">陶瓷盘损伤（缺口 · 划痕 · 裂纹）</span><span class="en">Ceramic Plate Damage (Notch · Scratch · Crack)</span><span class="ipa">/səˈræmɪk pleɪt ˈdæmɪdʒ nɒtʃ skrætʃ kræk/</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="block-title">各级维修工艺 <span class="en">Repair Process by Level (Lv.1 – Lv.4)</span><span class="ipa">/ˈprəʊses/</span></h3>
+  <figure>
+    <img src="assets/page-08.jpg" alt="Lv.1–Lv.4 维修流程示意">
+    <figcaption>核心工艺（Main Tech）：<span class="zh">机械加工</span><span class="en">Machining</span><span class="ipa">/məˈʃiːnɪŋ/</span> · <span class="zh">重新成型凹点 / 沟槽</span><span class="en">Re-Dimple or Re-Groove</span><span class="ipa">/ˌriː ˈdɪmpl ɔː ˌriː ˈɡruːv/</span> · <span class="zh">重新粘接</span><span class="en">Re-Bonding</span><span class="ipa">/ˌriː ˈbɒndɪŋ/</span> · <span class="zh">新盘粘接</span><span class="en">New Plate Bonding</span><span class="ipa">/njuː pleɪt ˈbɒndɪŋ/</span> · <span class="zh">新金属加热器粘接</span><span class="en">New Metal Heater Bonding</span><span class="ipa">/njuː ˈmetl ˈhiːtə ˈbɒndɪŋ/</span></figcaption>
+  </figure>
+
+  <h3 class="block-title">机型 / 料号维修能力表（一）<span class="en">Repair Capability — LAM</span><span class="ipa">/pɑːt ˈnʌmbə/</span></h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>制造商<span class="en">Maker</span><span class="ipa">/ˈmeɪkə/</span></th>
+          <th>机型<span class="en">Name</span><span class="ipa">/neɪm/</span></th>
+          <th>料号<span class="en">P/N</span><span class="ipa">/pɑːt ˈnʌmbə/</span></th>
+          <th class="mark">L1</th><th class="mark">L2</th><th class="mark">L3</th><th class="mark">L4</th><th class="mark">L0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>LAM</td><td>2300 Exelan</td><td>839-800327-315</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark ok">O</td></tr>
+        <tr><td>LAM</td><td>2300 Flex</td><td>839-800327-385</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark ok">O</td></tr>
+        <tr><td>LAM</td><td>2300 Flex 45</td><td>839-800327-390/391</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark ok">O</td></tr>
+        <tr><td>LAM</td><td>2300 Flex 45</td><td>839-800327-410/412/418/419/423</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>2300 Flex 45</td><td>839-800327-432</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>2300 Flex DX</td><td>839-800327-438</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>2300 Flex EX</td><td>839-800327-508/509</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>2300 Flex FX</td><td>839-800327-518/519</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>2300 Flex GX</td><td>839-800327-523/525/526/562</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>2300 Flex ES/EL · FS/FL</td><td>839-019090-577</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>2300 Versys Sta</td><td>839-019090-324</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td></tr>
+        <tr><td>LAM</td><td>2300 Versys Kiyo</td><td>839-019090-328</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td></tr>
+        <tr><td>LAM</td><td>2300 Kiyo 45</td><td>839-019090-374</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td></tr>
+        <tr><td>LAM</td><td>2300 Syndion C/FS</td><td>839-800328-300</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>2300 Kiyo CX/EX/FX</td><td>839-019090-608/611/620</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td></tr>
+        <tr><td>LAM</td><td>Kiyo EXP</td><td>719-101612-883</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>Kiyo FXE</td><td>839-019090-632/635</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>LAM</td><td>Kiyo FXE</td><td>719-101612-885/887</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark ok">O</td></tr>
+        <tr><td>LAM</td><td>Kiyo GX/GXE</td><td>839-101612-037/054/068</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">Develop</td><td class="mark na">N/A</td><td class="mark na">Develop</td></tr>
+        <tr><td>LAM</td><td>Speed</td><td>02-267289-00</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="block-title">机型 / 料号维修能力表（二）<span class="en">Repair Capability — AMAT</span><span class="ipa">/pɑːt ˈnʌmbə/</span></h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>制造商<span class="en">Maker</span><span class="ipa">/ˈmeɪkə/</span></th>
+          <th>机型<span class="en">Name</span><span class="ipa">/neɪm/</span></th>
+          <th>料号<span class="en">P/N</span><span class="ipa">/pɑːt ˈnʌmbə/</span></th>
+          <th class="mark">L1</th><th class="mark">L2</th><th class="mark">L3</th><th class="mark">L4</th><th class="mark">L0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>AMAT</td><td>Producer e</td><td>0010-24774, 0040-53718, 0040-81673</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>e-Max CT+</td><td>0010-16392, 0010-11216</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>Enabler E2</td><td>0010-27784, 0010-23833</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>Enabler E5</td><td>0010-33416, 0010-43366</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>Avatar</td><td>0010-54355, 0041-89492</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>Producer Georgia</td><td>0010-41121, 0041-13111, 0041-12765</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>DPS II</td><td>0040-33215, 0010-30277</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>DPS G2 OPUS</td><td>0190-23942, 6000-06083</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>DPS G3</td><td>0190-25087, 0190-29754</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>Mesa G3.9 / G5 Minos</td><td>0010-37176, 0010-47763</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark ok">O</td></tr>
+        <tr><td>AMAT</td><td>Mesa G5 Maya</td><td>0010-50850</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark ok">O</td></tr>
+        <tr><td>AMAT</td><td>Mesa C3 4zone HT</td><td>0041-50966</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>Mesa C3 SYM3</td><td>0041-26723</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark no-x">✕</td></tr>
+        <tr><td>AMAT</td><td>Mesa C3 SYM4 Black Hawk</td><td>0041-75950</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark ok">O</td></tr>
+        <tr><td>AMAT</td><td>Ultima</td><td>0040-48594</td><td class="mark ok">O</td><td class="mark no-x">✕</td><td class="mark ok">O</td><td class="mark na">N/A</td><td class="mark ok">O</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 03 MCA -->
+<section id="mca">
+  <div class="sec-head">
+    <span class="no">03</span>
+    <h2>MCA 卡盘 产品介绍</h2>
+    <span class="en">MCA Chuck</span>
+    <span class="ipa">/tʃʌk/</span>
+  </div>
+
+  <h3 class="block-title">产品与常见问题 <span class="en">Products &amp; Common Issues</span><span class="ipa">/ˈprɒdʌkts ənd ˈkɒmən ˈɪʃuːz/</span></h3>
+  <div class="tbl-wrap">
+    <table style="min-width:560px">
+      <thead>
+        <tr>
+          <th>问题<span class="en">Issue</span><span class="ipa">/ˈɪʃuː/</span></th>
+          <th>原因<span class="en">Cause</span><span class="ipa">/kɔːz/</span></th>
+          <th>解决方案<span class="en">Solution</span><span class="ipa">/səˈluːʃn/</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="zh">晶圆破碎</span><span class="en">Wafer Broken</span><span class="ipa">/ˈweɪfə ˈbrəʊkən/</span></td>
+          <td><span class="zh">颗粒物 · 凸垫磨损等</span><span class="en">Particle, Pad Wear Out, etc.</span><span class="ipa">/ˈpɑːtɪkl pæd weə aʊt/</span></td>
+          <td><span class="zh">重新涂覆</span><span class="en">Re-coating</span><span class="ipa">/ˌriː ˈkəʊtɪŋ/</span></td>
+        </tr>
+        <tr>
+          <td><span class="zh">晶圆位置错误</span><span class="en">Wafer Wrong Position</span><span class="ipa">/rɒŋ pəˈzɪʃn/</span></td>
+          <td><span class="zh">凸垫磨损</span><span class="en">Pad Wear Down</span><span class="ipa">/pæd weə daʊn/</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><span class="zh">背压故障</span><span class="en">Backside Pressure Fault</span><span class="ipa">/ˈbæksaɪd ˈpreʃə fɔːlt/</span></td>
+          <td><span class="zh">陶瓷台座边缘磨损</span><span class="en">Edge of Ceramic Pedestal Wear Out</span><span class="ipa">/səˈræmɪk ˈpedɪstl/</span></td>
+          <td rowspan="2"><span class="zh">陶瓷台座磨损 / 颗粒物</span><span class="en">Ceramic Pedestal Wear Out / Particle</span><span class="ipa">/ˈpɑːtɪkl/</span></td>
+        </tr>
+        <tr>
+          <td><span class="zh">背面氦气泄漏</span><span class="en">Backside He Leak</span><span class="ipa">/ˈhiːliəm liːk/</span></td>
+          <td><span class="zh">颗粒物</span><span class="en">Particle</span><span class="ipa">/ˈpɑːtɪkl/</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <strong>产品系列 <span style="font-weight:500;color:var(--muted)">Product Series</span>：</strong>
+    <span class="tag">高温 12 英寸 High Temp 12″ /ˈhaɪ temp/</span>
+    <span class="tag">低温 12 英寸 Low Temp 12″ /ˌləʊ ˈtemp/</span>
+    <span class="tag">DT ESC 12 英寸 DT ESC 12″</span>
+  </div>
+
+  <figure>
+    <img src="assets/page-12.jpg" alt="MCA 卡盘产品及常见问题示意">
+    <figcaption>MCA 卡盘产品系列与常见问题<span class="en">MCA Chuck Product Series &amp; Common Issues</span></figcaption>
+  </figure>
+
+  <div class="grid-2">
+    <figure style="margin:0"><img src="assets/page-13.jpg" alt="MCA 卡盘结构图"><figcaption>MCA 卡盘结构示意<span class="en">MCA Chuck Structure /ˈstrʌktʃə/</span></figcaption></figure>
+    <figure style="margin:0"><img src="assets/page-14.jpg" alt="MCA 维修常见目录"><figcaption>MCA 维修常见目录<span class="en">MCA Repair Common Catalog /ˈkætəlɒɡ/</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- 04 Heater -->
+<section id="heater">
+  <div class="sec-head">
+    <span class="no">04</span>
+    <h2>Heater 氧化铝加热器 产品介绍</h2>
+    <span class="en">Alumina Heater</span>
+    <span class="ipa">/əˈluːmɪnə ˈhiːtə/</span>
+  </div>
+
+  <div class="card">
+    <ul class="dots">
+      <li><span class="zh">氮化铝：热导率高，热膨胀系数与硅晶圆相近</span><span class="en">Aluminum Nitride (AlN): High Thermal Conductivity, CTE Similar to Si Wafer</span><span class="ipa">/əˈluːmɪnəm ˈnaɪtraɪd ˈθɜːml ˌkɒndʌkˈtɪvəti kəʊˈefɪʃnt əv ˈθɜːml ɪkˈspænʃn ˈsɪmɪlə tə ˈsɪlɪkən ˈweɪfə/</span></li>
+      <li><span class="zh">设备厂商：CVD 化学气相沉积，低温至高温（最高 650 ℃）</span><span class="en">Equipment Maker: CVD, Low Temp. ~ High Temp. (Max. 650 ℃)</span><span class="ipa">/ɪˈkwɪpmənt ˈmeɪkə ləʊ temp haɪ temp mæks/</span></li>
+    </ul>
+  </div>
+
+  <h3 class="block-title">结构组成 <span class="en">Structure Components</span><span class="ipa">/kəmˈpəʊnənts/</span></h3>
+  <div class="grid-3">
+    <div class="term-card"><div class="zh">陶瓷盘体</div><div class="en">Plate (Body)</div><div class="ipa">/pleɪt ˈbɒdi/</div></div>
+    <div class="term-card"><div class="zh">升降针孔</div><div class="en">Lift Pin Hole</div><div class="ipa">/lɪft pɪn həʊl/</div></div>
+    <div class="term-card"><div class="zh">轴（钎焊）</div><div class="en">Shaft (Brazed)</div><div class="ipa">/ʃɑːft breɪzd/</div></div>
+    <div class="term-card"><div class="zh">杆（电极 · 加热器等）</div><div class="en">Rod (Electrode, Heater, Etc.)</div><div class="ipa">/rɒd ɪˈlektrəʊd ˈhiːtə/</div></div>
+    <div class="term-card"><div class="zh">射频网（嵌入式）</div><div class="en">RF Mesh (Imbedded)</div><div class="ipa">/meʃ ɪmˈbedɪd/</div></div>
+    <div class="term-card"><div class="zh">加热线圈（嵌入式）</div><div class="en">Heat Coil (Imbedded)</div><div class="ipa">/hiːt kɔɪl ɪmˈbedɪd/</div></div>
+  </div>
+
+  <figure>
+    <img src="assets/page-16.jpg" alt="Heater 结构分解图">
+    <figcaption>Heater 结构分解图<span class="en">Heater Structure Diagram /ˈdaɪəɡræm/</span></figcaption>
+  </figure>
+  <figure>
+    <img src="assets/page-17.jpg" alt="Heater 产品实物图">
+    <figcaption>Heater 产品实物<span class="en">Product Photo /ˈfəʊtəʊ/</span></figcaption>
+  </figure>
+</section>
+
+<!-- 05 RF -->
+<section id="rf">
+  <div class="sec-head">
+    <span class="no">05</span>
+    <h2>RF 射频 维修介绍</h2>
+    <span class="en">Radio Frequency (RF) Repair</span>
+    <span class="ipa">/ˈreɪdiəʊ ˈfriːkwənsi rɪˈpeə/</span>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom:12px">维修范围覆盖以下类型：</p>
+    <span class="term"><span class="zh">匹配器</span><span class="en">Matcher</span><span class="ipa">/ˈmætʃə/</span></span>
+    <span class="term"><span class="zh">射频电源</span><span class="en">RPS (RF Power Supply)</span><span class="ipa">/ˌɑːr ef ˈpaʊə səˈplaɪ/</span></span>
+    <span class="term"><span class="zh">臭氧发生器</span><span class="en">O₃ (Ozone) Generator</span><span class="ipa">/ˈəʊzəʊn ˈdʒenəreɪtə/</span></span>
+    <span class="term"><span class="zh">电气部件</span><span class="en">Electrics</span><span class="ipa">/ɪˈlektrɪks/</span></span>
+  </div>
+
+  <figure>
+    <img src="assets/page-19.jpg" alt="RF 品牌与系列">
+    <figcaption>覆盖品牌：MKS · DAIHEN · TRAZAR · ENI · KYOSAN · PSC · ASTEC · ADTEC · MATTSON · AE；代表系列：MKS FI / SPECTRUM / AX 系列、AE PDX 系列、ASTEC ATL 系列、TRAZAR AMU、DAIHEN MFM</figcaption>
+  </figure>
+</section>
+
+<!-- 06 Lamp -->
+<section id="lamp">
+  <div class="sec-head">
+    <span class="no">06</span>
+    <h2>Lamp 灯泡 产品介绍</h2>
+    <span class="en">Lamp (XBO Short-Arc)</span>
+    <span class="ipa">/læmp ˈzenɒn ʃɔːt ɑːk/</span>
+  </div>
+
+  <h3 class="block-title">系列特点与优势 <span class="en">Features &amp; Advantages</span><span class="ipa">/ədˈvɑːntɪdʒɪz/</span></h3>
+  <div class="grid-2">
+    <div class="card">
+      <p style="font-weight:700;margin-bottom:8px">特点 <span style="font-weight:500;color:var(--muted)">Features /ˈfiːtʃəz/</span></p>
+      <ul class="dots">
+        <li><span class="zh">色温：约 6,000 K（日光）</span><span class="en">Color Temperature: approx. 6,000 K (Daylight)</span><span class="ipa">/ˈkʌlə ˈtemprətʃə ˈdeɪlaɪt/</span></li>
+        <li><span class="zh">波长段：120 nm – 190 nm</span><span class="en">Wavelength Range: 120 – 190 nm</span><span class="ipa">/ˈweɪvleŋθ reɪndʒ/</span></li>
+        <li><span class="zh">高显色指数：Ra &gt; 95</span><span class="en">High Color Rendering Index (Ra &gt; 95)</span><span class="ipa">/ˈrendərɪŋ ˈɪndeks/</span></li>
+        <li><span class="zh">可见光范围内的连续光谱</span><span class="en">Continuous Spectrum in Visible Range</span><span class="ipa">/kənˈtɪnjuəs ˈspektrəm ˈvɪzəbl/</span></li>
+        <li><span class="zh">电弧稳定性高</span><span class="en">High Arc Stability</span><span class="ipa">/haɪ ɑːk stəˈbɪləti/</span></li>
+        <li><span class="zh">热重启能力 · 可调光 · 启动瞬间亮起</span><span class="en">Hot Restrike · Dimmable · Instant Start</span><span class="ipa">/hɒt ˈriːstraɪk ˈdɪməbl ˈɪnstənt stɑːt/</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <p style="font-weight:700;margin-bottom:8px">优势 <span style="font-weight:500;color:var(--muted)">Advantages /ədˈvɑːntɪdʒɪz/</span></p>
+      <ul class="dots">
+        <li><span class="zh">非常高的亮度（点光源）</span><span class="en">Very High Brightness (Point Light Source)</span><span class="ipa">/ˈbraɪtnəs pɔɪnt laɪt sɔːs/</span></li>
+        <li><span class="zh">持续的色彩质量，无论灯泡类型与瓦数</span><span class="en">Consistent Color Quality Regardless of Type &amp; Wattage</span><span class="ipa">/ˈkwɒləti ˈwɒtɪdʒ/</span></li>
+        <li><span class="zh">灯泡整个使用寿命期间保持恒定光色</span><span class="en">Constant Light Color over Lifetime</span><span class="ipa">/ˈkɒnstənt laɪt ˈkʌlə ˈlaɪftaɪm/</span></li>
+        <li><span class="zh">灯泡寿命长</span><span class="en">Long Lamp Life</span><span class="ipa">/lɒŋ læmp laɪf/</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>安全建议 Safety Instructions /ˈseɪfti ɪnˈstrʌkʃnz/：</strong>
+    由于 XBO 灯在热态与冷态下均具有高亮度、<strong>紫外线辐射 UV Radiation /ˌjuː ˈviː reɪdiˈeɪʃn/</strong> 和高内部压力，因此只能在适当的封闭外壳中运行。处理这些灯时请始终使用提供的保护套；只有在采取适当安全措施时，才可用作开放式灯。
+  </div>
+
+  <h3 class="block-title">来料检验 <span class="en">Incoming Inspection</span><span class="ipa">/ˈɪŋkʌmɪŋ ɪnˈspekʃn/</span></h3>
+  <div class="grid-2">
+    <div class="card">
+      <span class="term lg" style="margin:0 0 8px"><span class="zh">颗粒物检查</span><span class="en">Particle Inspection</span><span class="ipa">/ˈpɑːtɪkl ɪnˈspekʃn/</span></span>
+      <p style="font-size:14px;color:var(--ink-2)">用蓝色光源检查灯臂上是否有颗粒物（Particle），确认是否有不良品。</p>
+    </div>
+    <div class="card">
+      <span class="term lg" style="margin:0 0 8px"><span class="zh">划痕检查</span><span class="en">Scratch Inspection</span><span class="ipa">/skrætʃ ɪnˈspekʃn/</span></span>
+      <p style="font-size:14px;color:var(--ink-2)">用黄色光源检查是否有细微划痕（Scratch），确认是否有不良品。</p>
+    </div>
+  </div>
+
+  <h3 class="block-title">RTP 回火灯泡 / 灯罩 / 灯壳 <span class="en">RTP (Rapid Thermal Processing) Lamp · Reflector · Housing</span><span class="ipa">/læmp ˌreflektə ˈhaʊzɪŋ/</span></h3>
+  <div class="tbl-wrap">
+    <table style="min-width:560px">
+      <thead>
+        <tr>
+          <th>产品<span class="en">Product</span><span class="ipa">/ˈprɒdʌkt/</span></th>
+          <th>原厂料号<span class="en">OEM P/N</span><span class="ipa">/pɑːt ˈnʌmbə/</span></th>
+          <th>使用机型<span class="en">Equipment</span><span class="ipa">/ɪˈkwɪpmənt/</span></th>
+          <th>描述<span class="en">Description</span><span class="ipa">/dɪˈskrɪpʃn/</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="zh">RTP 回火灯泡</span><span class="en">RTP Lamp</span><span class="ipa">/læmp/</span></td><td>0190-38516</td><td>AMAT Centura (Radiance)</td><td>Lamp 82V 520W</td></tr>
+        <tr><td><span class="zh">RTP 回火灯泡</span><span class="en">RTP Lamp</span><span class="ipa">/læmp/</span></td><td>0190-26805</td><td>AMAT Vulcan</td><td>Lamp 95V 645W</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-3" style="margin-top:20px">
+    <figure style="margin:0"><img src="assets/page-24.jpg" alt="RTP 回火灯泡"><figcaption><span class="zh">回火灯泡</span><span class="en">RTP Lamp</span><span class="ipa">/læmp/</span></figcaption></figure>
+    <figure style="margin:0"><img src="assets/page-25.jpg" alt="RTP 回火灯罩"><figcaption><span class="zh">回火灯罩</span><span class="en">RTP Lamp Reflector</span><span class="ipa">/ˌreflektə/</span></figcaption></figure>
+    <figure style="margin:0"><img src="assets/page-26.jpg" alt="RTP 回火灯壳"><figcaption><span class="zh">回火灯壳</span><span class="en">RTP Lamp Housing</span><span class="ipa">/ˈhaʊzɪŋ/</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- 07 其他零部件 -->
+<section id="others">
+  <div class="sec-head">
+    <span class="no">07</span>
+    <h2>其他零部件 产品介绍</h2>
+    <span class="en">Other Spare Parts (ETCH-Sym3X)</span>
+    <span class="ipa">/ˈʌðə spɛə pɑːts/</span>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <span class="term"><span class="zh">工艺套件</span><span class="en">Process Kit</span><span class="ipa">/ˈprəʊses kɪt/</span></span>
+    <span class="term"><span class="zh">预防保养套件</span><span class="en">PM (Preventive Maintenance) Kit</span><span class="ipa">/prɪˈventɪv ˈmeɪntənəns kɪt/</span></span>
+    <span class="term"><span class="zh">原厂与二供</span><span class="en">OEM &amp; 2nd Source</span><span class="ipa">/ˌəʊ iː ˈem ənd ˈsekənd sɔːs/</span></span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>模块<span class="en">Module</span><span class="ipa">/ˈmɒdjuːl/</span></th>
+          <th>料号<span class="en">Parts Number</span><span class="ipa">/pɑːts ˈnʌmbə/</span></th>
+          <th>描述<span class="en">Description</span><span class="ipa">/dɪˈskrɪpʃn/</span></th>
+          <th>类型<span class="en">Type</span><span class="ipa">/taɪp/</span></th>
+          <th>供应<span class="en">Supply</span><span class="ipa">/səˈplaɪ/</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>ETCH-Sym3X</td><td>0021-82813</td><td><span class="zh">狭缝衬板门</span><span class="en">Slit Liner Door</span><span class="ipa">/slɪt ˈlaɪnə dɔː/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0020-87791</td><td><span class="zh">等离子体屏蔽板（Y₂O₃ 涂层）</span><span class="en">Plasma Screen Y₂O₃ Coated 300mm</span><span class="ipa">/ˈplæzmə skriːn ˈkəʊtɪd/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0041-51792</td><td><span class="zh">阴极套筒（Orion 固定阴极）</span><span class="en">Cathode Sleeve, Orion Fixed Cathode</span><span class="ipa">/ˈkæθəʊd sliːv/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0041-52723</td><td><span class="zh">下部阴极衬板</span><span class="en">Liner, Lower Cathode</span><span class="ipa">/ˈlaɪnə ˈləʊə ˈkæθəʊd/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0041-81447</td><td><span class="zh">衬板（TSGD MK2，单狭缝）</span><span class="en">Liner, TSGD MK2, Single Slit</span><span class="ipa">/ˈsɪŋɡl slɪt/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0200-06616</td><td><span class="zh">喷嘴镶件（TGN Y₂O₃）</span><span class="en">Nozzle Insert TGN Y₂O₃</span><span class="ipa">/ˈnɒzl ɪnˈsɜːt/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0200-15120</td><td><span class="zh">气体注入喷嘴（氧化钇）</span><span class="en">Gas Injection Nozzle .050, Yttria</span><span class="ipa">/ɡæs ɪnˈdʒekʃn ˈnɒzl ˈɪtriə/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0200-17989</td><td><span class="zh">盖板（宽型，23.5 直径，C3）</span><span class="en">Lid, Wide, 23.5 DIA, C3</span><span class="ipa">/lɪd waɪd/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0200-17990</td><td><span class="zh">中心轮毂（四合一，Mesa C3）</span><span class="en">Hub, Center 4-Fold, Mesa C3</span><span class="ipa">/hʌb ˈsentə fəʊld/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0200-16332</td><td><span class="zh">单环石英件（ESC 用）</span><span class="en">Single Ring Quartz, 2.8mm ESC, SMOD</span><span class="ipa">/ˈsɪŋɡl rɪŋ kwɔːts/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0200-24624</td><td><span class="zh">工艺环管盖（带对位）</span><span class="en">Pipe Cover, Process Ring, W/ Alignment</span><span class="ipa">/paɪp ˈkʌvə əˈlaɪnmənt/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0022-31316</td><td><span class="zh">O 型密封圈（PTFE 材质）</span><span class="en">O-Ring, SGD Nozzle Bumper, PTFE</span><span class="ipa">/ˈəʊ rɪŋ ˌpiː tiː ef ˈiː/</span></td><td>PTFE</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>3700-00081 / 3700-08685</td><td><span class="zh">O 型密封圈（Kalrez 8085）</span><span class="en">O-Ring ID 21.955, Kalrez 8085</span><span class="ipa">/ˈkælrez/</span></td><td>Kalrez</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>3700-07336 / 3700-07482</td><td><span class="zh">O 型密封圈（Chemraz，GT-Weed）</span><span class="en">O-Ring, Chemraz 9385-SWXPE</span><span class="ipa">/ˈkemræz/</span></td><td>GT-Weed</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>3700-07245 / 3700-07247 / 3700-07246</td><td><span class="zh">O 型密封圈（Kalrez 8575LS 系列）</span><span class="en">O-Ring, Kalrez 8575LS</span><span class="ipa">/ˈkælrez/</span></td><td>Kalrez</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>3700-06624 / 3700-06635 / 3700-07140 / 3700-06585</td><td><span class="zh">O 型密封圈（XPE 系列）</span><span class="en">O-Ring, XPE</span><span class="ipa">/ˈəʊ rɪŋ/</span></td><td>GT-Weed</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0020-97663</td><td><span class="zh">平头螺钉（阳极氧化铝）</span><span class="en">Screw, Flat Head, Anodized Al</span><span class="ipa">/skruː flæt hed ˈænədaɪzd/</span></td><td>Process Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0022-00914</td><td><span class="zh">滤光观察窗</span><span class="en">Filter, UV View, Window</span><span class="ipa">/ˈfɪltə ˈwɪndəʊ/</span></td><td>PM Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0190-60523</td><td><span class="zh">蓝宝石观察窗</span><span class="en">Window, IEP Sapphire</span><span class="ipa">/ˈwɪndəʊ ˈsæfaɪə/</span></td><td>PM Kit</td><td>OEM &amp; 2nd</td></tr>
+        <tr><td>ETCH-Sym3X</td><td>0200-16530 / 0200-01195</td><td><span class="zh">终点检测发射观察窗</span><span class="en">Window, Emission End Point (IEP)</span><span class="ipa">/ɪˈmɪʃn end pɔɪnt ˈwɪndəʊ/</span></td><td>PM Kit</td><td>OEM &amp; 2nd</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:10px;font-size:12.5px;color:var(--muted)">※ 上表为原资料 Parts List 的分类汇总，完整逐条料号清单以原 PDF 第 28 页为准。</p>
+</section>
+
+<!-- 08 目标与展望 -->
+<section id="outlook">
+  <div class="sec-head">
+    <span class="no">08</span>
+    <h2>目标与展望</h2>
+    <span class="en">Goals &amp; Outlook</span>
+    <span class="ipa">/ɡəʊlz ənd ˈaʊtlʊk/</span>
+  </div>
+  <div class="grid-2">
+    <figure style="margin:0"><img src="assets/page-29.jpg" alt="目标与展望"><figcaption>目标与展望<span class="en">Goals &amp; Outlook /ɡəʊlz ənd ˈaʊtlʊk/</span></figcaption></figure>
+    <figure style="margin:0"><img src="assets/page-30.jpg" alt="愿景"><figcaption>愿景<span class="en">Vision /ˈvɪʒn/</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- 09 术语表 -->
+<section id="glossary">
+  <div class="sec-head">
+    <span class="no">09</span>
+    <h2>技术术语表</h2>
+    <span class="en">Technical Glossary</span>
+    <span class="ipa">/ˈteknɪkl ˈɡlɒsəri/</span>
+  </div>
+  <div class="grid-3">
+    <div class="term-card"><div class="zh">静电卡盘</div><div class="en">Electrostatic Chuck (ESC)</div><div class="ipa">/ɪˌlektrəʊˈstætɪk tʃʌk/</div></div>
+    <div class="term-card"><div class="zh">晶圆</div><div class="en">Wafer</div><div class="ipa">/ˈweɪfə/</div></div>
+    <div class="term-card"><div class="zh">刻蚀</div><div class="en">Etch</div><div class="ipa">/etʃ/</div></div>
+    <div class="term-card"><div class="zh">薄膜沉积</div><div class="en">Thin Film Deposition</div><div class="ipa">/θɪn fɪlm ˌdepəˈzɪʃn/</div></div>
+    <div class="term-card"><div class="zh">离子注入</div><div class="en">Ion Implantation</div><div class="ipa">/ˈaɪən ˌɪmplɑːnˈteɪʃn/</div></div>
+    <div class="term-card"><div class="zh">扩散</div><div class="en">Diffusion</div><div class="ipa">/dɪˈfjuːʒn/</div></div>
+    <div class="term-card"><div class="zh">化学气相沉积</div><div class="en">Chemical Vapor Deposition (CVD)</div><div class="ipa">/ˌkemɪkl ˈveɪpə ˌdepəˈzɪʃn/</div></div>
+    <div class="term-card"><div class="zh">氧化铝</div><div class="en">Alumina (Al₂O₃)</div><div class="ipa">/əˈluːmɪnə/</div></div>
+    <div class="term-card"><div class="zh">氮化铝</div><div class="en">Aluminum Nitride (AlN)</div><div class="ipa">/əˈluːmɪnəm ˈnaɪtraɪd/</div></div>
+    <div class="term-card"><div class="zh">介质材料</div><div class="en">Dielectric Material</div><div class="ipa">/ˌdaɪɪˈlektrɪk məˈtɪəriəl/</div></div>
+    <div class="term-card"><div class="zh">阳极氧化</div><div class="en">Anodizing</div><div class="ipa">/ˈænədaɪzɪŋ/</div></div>
+    <div class="term-card"><div class="zh">库仑式吸附</div><div class="en">Coulombic Chucking</div><div class="ipa">/kuːˈlɒmbɪk ˈtʃʌkɪŋ/</div></div>
+    <div class="term-card"><div class="zh">双极型</div><div class="en">Bi-Polar</div><div class="ipa">/baɪ ˈpəʊlə/</div></div>
+    <div class="term-card"><div class="zh">压纹凸点</div><div class="en">Embossing</div><div class="ipa">/ɪmˈbɒsɪŋ/</div></div>
+    <div class="term-card"><div class="zh">凹点</div><div class="en">Dimple</div><div class="ipa">/ˈdɪmpl/</div></div>
+    <div class="term-card"><div class="zh">粘接</div><div class="en">Bonding</div><div class="ipa">/ˈbɒndɪŋ/</div></div>
+    <div class="term-card"><div class="zh">机械加工</div><div class="en">Machining</div><div class="ipa">/məˈʃiːnɪŋ/</div></div>
+    <div class="term-card"><div class="zh">陶瓷</div><div class="en">Ceramic</div><div class="ipa">/səˈræmɪk/</div></div>
+    <div class="term-card"><div class="zh">台座</div><div class="en">Pedestal</div><div class="ipa">/ˈpedɪstl/</div></div>
+    <div class="term-card"><div class="zh">氦气</div><div class="en">Helium (He)</div><div class="ipa">/ˈhiːliəm/</div></div>
+    <div class="term-card"><div class="zh">热电偶</div><div class="en">Thermocouple (TC)</div><div class="ipa">/ˈθɜːməʊkʌpl/</div></div>
+    <div class="term-card"><div class="zh">冷却液</div><div class="en">Coolant</div><div class="ipa">/ˈkuːlənt/</div></div>
+    <div class="term-card"><div class="zh">热导率</div><div class="en">Thermal Conductivity</div><div class="ipa">/ˈθɜːml ˌkɒndʌkˈtɪvəti/</div></div>
+    <div class="term-card"><div class="zh">热膨胀系数</div><div class="en">Coefficient of Thermal Expansion (CTE)</div><div class="ipa">/ˌkəʊɪˈfɪʃnt əv ɪkˈspænʃn/</div></div>
+    <div class="term-card"><div class="zh">钎焊</div><div class="en">Brazing</div><div class="ipa">/ˈbreɪzɪŋ/</div></div>
+    <div class="term-card"><div class="zh">电极</div><div class="en">Electrode</div><div class="ipa">/ɪˈlektrəʊd/</div></div>
+    <div class="term-card"><div class="zh">匹配器</div><div class="en">Matcher</div><div class="ipa">/ˈmætʃə/</div></div>
+    <div class="term-card"><div class="zh">等离子体</div><div class="en">Plasma</div><div class="ipa">/ˈplæzmə/</div></div>
+    <div class="term-card"><div class="zh">臭氧</div><div class="en">Ozone</div><div class="ipa">/ˈəʊzəʊn/</div></div>
+    <div class="term-card"><div class="zh">快速热处理</div><div class="en">Rapid Thermal Processing (RTP)</div><div class="ipa">/ˈræpɪd ˈθɜːml ˈprəʊsesɪŋ/</div></div>
+    <div class="term-card"><div class="zh">色温</div><div class="en">Color Temperature</div><div class="ipa">/ˈkʌlə ˈtemprətʃə/</div></div>
+    <div class="term-card"><div class="zh">显色指数</div><div class="en">Color Rendering Index (Ra)</div><div class="ipa">/ˈrendərɪŋ ˈɪndeks/</div></div>
+    <div class="term-card"><div class="zh">紫外线辐射</div><div class="en">UV Radiation</div><div class="ipa">/ˌjuː ˈviː reɪdiˈeɪʃn/</div></div>
+    <div class="term-card"><div class="zh">石英</div><div class="en">Quartz</div><div class="ipa">/kwɔːts/</div></div>
+    <div class="term-card"><div class="zh">蓝宝石</div><div class="en">Sapphire</div><div class="ipa">/ˈsæfaɪə/</div></div>
+    <div class="term-card"><div class="zh">颗粒物</div><div class="en">Particle</div><div class="ipa">/ˈpɑːtɪkl/</div></div>
+    <div class="term-card"><div class="zh">划痕</div><div class="en">Scratch</div><div class="ipa">/skrætʃ/</div></div>
+    <div class="term-card"><div class="zh">裂纹</div><div class="en">Crack</div><div class="ipa">/kræk/</div></div>
+    <div class="term-card"><div class="zh">泄漏</div><div class="en">Leak</div><div class="ipa">/liːk/</div></div>
+    <div class="term-card"><div class="zh">阴极</div><div class="en">Cathode</div><div class="ipa">/ˈkæθəʊd/</div></div>
+    <div class="term-card"><div class="zh">衬板</div><div class="en">Liner</div><div class="ipa">/ˈlaɪnə/</div></div>
+    <div class="term-card"><div class="zh">喷嘴</div><div class="en">Nozzle</div><div class="ipa">/ˈnɒzl/</div></div>
+    <div class="term-card"><div class="zh">O 型密封圈</div><div class="en">O-Ring</div><div class="ipa">/ˈəʊ rɪŋ/</div></div>
+  </div>
+</section>
+
+<div class="footer-note">
+  内容整理自《合肥武曲威耀 ESC 产品介紹 2026-05 V4》（HeFei Huasi Electronic Technology CO., LTD）· 页面生成于 2026-11-03<br>
+  音标采用英式发音 IPA（International Phonetic Alphabet /ɪnˌtəˈnæʃənl fəˈnetɪk ˈælfəbet/）
+</div>
+
+</main>
+</body>
+</html>
