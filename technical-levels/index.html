@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>技术等级示意｜Technical Repair Levels</title>
+  <style>
+    :root {
+      --ink: #1a2332;
+      --muted: #4a5568;
+      --canvas: #f5f7fa;
+      --panel: #ffffff;
+      --footer-blue: #0e5aa7;
+      --footer-dark: #123f6e;
+      --page-pad: clamp(14px, 2.4vw, 42px);
+      --footer-h: clamp(54px, 8.5vh, 92px);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-width: 320px; min-height: 100%; margin: 0; }
+
+    body {
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) var(--footer-h);
+      overflow: hidden;
+    }
+
+    .content {
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(14px, 2.2vh, 28px) var(--page-pad) 10px;
+    }
+
+    .board {
+      width: min(100%, 1520px);
+      height: min(82svh, calc(100svh - var(--footer-h) - 24px));
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(10px, 1.55vw, 24px);
+    }
+
+    .level {
+      --accent: #f5aa29;
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: clamp(56px, 6.8vh, 76px) minmax(0, 1fr) clamp(42px, 5vh, 54px) clamp(126px, 15.5vh, 168px);
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid #e3e8ef;
+      box-shadow: 0 1px 3px rgba(16, 35, 61, .06), 0 8px 24px rgba(16, 35, 61, .06);
+    }
+
+    .level-2 { --accent: #2e79b6; }
+    .level-3 { --accent: #f33346; }
+    .level-4 { --accent: #05aa58; }
+
+    .level-head {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      padding: 5px 8px 4px;
+      color: white;
+      text-align: center;
+      background: var(--accent);
+    }
+
+    .level-no {
+      font-size: clamp(8px, .75vw, 11px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: .09em;
+      opacity: .92;
+    }
+
+    .title-zh {
+      font-size: clamp(13px, 1.05vw, 17px);
+      font-weight: 760;
+      line-height: 1.12;
+    }
+
+    .title-en {
+      max-width: 100%;
+      font-size: clamp(8px, .76vw, 11px);
+      font-weight: 650;
+      line-height: 1.16;
+      overflow-wrap: anywhere;
+    }
+
+    .ipa {
+      font-family: "Arial Unicode MS", "Segoe UI", sans-serif;
+      font-style: italic;
+      font-weight: 450;
+      letter-spacing: 0;
+    }
+
+    .diagram {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      gap: clamp(4px, .8vh, 10px);
+      padding: 10px 7px 8px;
+      overflow: hidden;
+    }
+
+    .stage {
+      position: relative;
+      flex: 1 1 0;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 20px;
+    }
+
+    .stage-caption {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      line-height: 1.1;
+      pointer-events: none;
+    }
+
+    .stage-caption .zh {
+      color: #53606c;
+      font-size: clamp(8px, .72vw, 10px);
+      font-weight: 650;
+    }
+
+    .stage-caption .en {
+      color: #74808b;
+      font-size: clamp(7px, .61vw, 8.5px);
+      line-height: 1.12;
+    }
+
+    .stack {
+      --ceramic: #4d83bc;
+      --ceramic-ink: #fff;
+      position: relative;
+      flex: 0 1 auto;
+      width: min(76%, 246px);
+      height: clamp(58px, 8.7vh, 92px);
+      min-width: 118px;
+      max-width: 100%;
+      isolation: isolate;
+    }
+
+    .stack.new-plate { --ceramic: #fff0c9; --ceramic-ink: #18202a; }
+
+    .base {
+      position: absolute;
+      z-index: 1;
+      top: 51%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #a7a7a7;
+      clip-path: polygon(0 100%, 0 77%, 7% 77%, 7% 38%, 16% 38%, 16% 0, 84% 0, 84% 38%, 93% 38%, 93% 77%, 100% 77%, 100% 100%);
+    }
+
+    .base-copy {
+      position: absolute;
+      z-index: 4;
+      top: 69%;
+      left: 15%;
+      right: 15%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      line-height: 1.06;
+      white-space: nowrap;
+    }
+
+    .base-copy .zh { font-size: clamp(8px, .78vw, 11px); font-weight: 650; }
+    .base-copy .en { font-size: clamp(6.8px, .59vw, 8.3px); }
+
+    .ceramic {
+      position: absolute;
+      z-index: 3;
+      top: 12%;
+      left: 16%;
+      right: 16%;
+      height: 33%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1px 3px;
+      color: var(--ceramic-ink);
+      text-align: center;
+      background: var(--ceramic);
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+
+    .ceramic .zh { font-size: clamp(7.5px, .77vw, 10.5px); font-weight: 650; }
+    .ceramic .en { font-size: clamp(6.4px, .57vw, 8px); }
+
+    .bond {
+      position: absolute;
+      z-index: 2;
+      top: 45%;
+      left: 16%;
+      right: 16%;
+      height: 6%;
+      min-height: 3px;
+      background: #f20c19;
+    }
+
+    .finish-strip {
+      position: absolute;
+      z-index: 5;
+      top: 7%;
+      left: 14%;
+      right: 14%;
+      height: 6%;
+      min-height: 3px;
+      background: #04a85b;
+    }
+
+    .bare .base { top: 25%; }
+    .bare .base-copy { top: 62%; }
+
+    .loose-bond {
+      position: absolute;
+      z-index: 3;
+      top: 8%;
+      left: 16%;
+      right: 16%;
+      height: 6%;
+      min-height: 3px;
+      background: #f20c19;
+    }
+
+    .has-heater .ceramic {
+      top: 4%;
+      height: 25%;
+    }
+
+    .has-heater .bond-top {
+      top: 29%;
+      height: 5%;
+    }
+
+    .heater {
+      position: absolute;
+      z-index: 2;
+      top: 34%;
+      left: 16%;
+      right: 16%;
+      height: 10%;
+      min-height: 5px;
+      background: #ffe100;
+    }
+
+    .has-heater .bond-bottom {
+      top: 44%;
+      height: 7%;
+    }
+
+    .main-tech {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2px 10px;
+      color: #101215;
+      background: var(--accent);
+      line-height: 1.08;
+    }
+
+    .main-tech .zh { font-size: clamp(12px, 1vw, 16px); font-weight: 800; }
+    .main-tech .en { font-size: clamp(7.5px, .7vw, 10px); font-weight: 650; }
+
+    .steps {
+      min-height: 0;
+      margin: 0;
+      padding: 9px 9px 8px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      gap: 3px;
+    }
+
+    .steps li {
+      display: grid;
+      grid-template-columns: 17px minmax(0, 1fr);
+      align-items: start;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .step-no {
+      padding-top: 1px;
+      font-size: clamp(12px, .95vw, 16px);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .step-term {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      line-height: 1.13;
+    }
+
+    .step-term .zh {
+      font-size: clamp(10px, .9vw, 13px);
+      font-weight: 720;
+      overflow-wrap: anywhere;
+    }
+
+    .step-term .en {
+      color: #333b44;
+      font-size: clamp(7.3px, .64vw, 9.3px);
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .step-term .ipa { color: #56616b; font-weight: 450; }
+
+    .footer {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(18px, 5vw, 82px);
+      color: rgba(255,255,255,.94);
+      background: var(--footer-blue);
+    }
+
+    .footer-label {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      line-height: 1.08;
+    }
+
+    .footer-label .zh { font-size: clamp(10px, 1vw, 14px); font-weight: 700; }
+    .footer-label .en { font-size: clamp(7px, .7vw, 9px); opacity: .92; }
+
+    .chevrons {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: clamp(110px, 20vw, 330px);
+      background: var(--footer-dark);
+      clip-path: polygon(38% 0, 100% 0, 100% 100%, 38% 100%, 0 50%);
+    }
+
+    .chevrons::before,
+    .chevrons::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 28%;
+      background: var(--footer-blue);
+      clip-path: polygon(48% 0, 68% 0, 20% 50%, 68% 100%, 48% 100%, 0 50%);
+      opacity: .95;
+    }
+
+    .chevrons::before { left: 27%; }
+    .chevrons::after { left: 52%; }
+
+    @media (max-width: 1100px) {
+      .page { min-height: 100svh; overflow: auto; grid-template-rows: auto 58px; }
+      .content { padding: 18px; }
+      .board { height: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .level { min-height: 510px; grid-template-rows: 64px minmax(310px, 1fr) 48px 148px; }
+      .level-no { font-size: 10px; }
+      .title-zh { font-size: 16px; }
+      .title-en { font-size: 10px; }
+      .stack { height: 82px; width: min(76%, 280px); }
+      .stage-caption .zh { font-size: 10px; }
+      .stage-caption .en { font-size: 8px; }
+      .base-copy .zh, .ceramic .zh { font-size: 10px; }
+      .base-copy .en, .ceramic .en { font-size: 8px; }
+      .main-tech .zh { font-size: 15px; }
+      .main-tech .en { font-size: 9px; }
+      .step-term .zh { font-size: 12px; }
+      .step-term .en { font-size: 9px; }
+    }
+
+    @media (max-width: 620px) {
+      .page { grid-template-rows: auto 48px; }
+      .content { padding: 12px; }
+      .board { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+      .level { min-height: 470px; grid-template-rows: 64px minmax(270px, 1fr) 48px 132px; }
+      .diagram { padding-inline: 10px; }
+      .stack { width: min(72%, 260px); height: 74px; }
+      .steps { padding: 8px 12px; }
+      .footer { padding-left: 18px; }
+      .chevrons { width: 100px; }
+    }
+
+    @media (max-height: 760px) and (min-width: 1101px) {
+      :root { --footer-h: 54px; }
+      .board { height: min(84svh, calc(100svh - var(--footer-h) - 16px)); }
+      .level { grid-template-rows: 52px minmax(0, 1fr) 40px 122px; }
+      .diagram { gap: 3px; padding-block: 6px; }
+      .stage { padding-top: 17px; }
+      .stack { height: clamp(54px, 8.4vh, 68px); }
+      .steps { padding: 6px 8px; }
+      .steps li { grid-template-columns: 15px minmax(0,1fr); gap: 3px; }
+      .step-term .zh { font-size: 10px; }
+      .step-term .en { font-size: 7px; }
+      .main-tech .zh { font-size: 12px; }
+      .main-tech .en { font-size: 7px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="content">
+      <section class="board" aria-label="四级技术处理示意图">
+        <article class="level level-1">
+          <header class="level-head">
+            <div class="level-no">等级 1 · Lv.1</div>
+            <div class="title-zh">表面处理</div>
+            <div class="title-en">Surface Treatment <span class="ipa">/ˈsɜrfɪs ˈtritmənt/</span></div>
+          </header>
+          <div class="diagram">
+            <div class="stage">
+              <div class="stage-caption"><span class="zh">原有结构</span></div>
+              <div class="stack">
+                <div class="base"></div>
+                <div class="base-copy"><span class="zh">铝基</span><span class="en">Al Base <span class="ipa">/ˈæləˌmɪnəm beɪs/</span></span></div>
+                <div class="bond"></div>
+                <div class="ceramic"><span class="zh">旧陶瓷</span><span class="en">Old Ceramic <span class="ipa">/oʊld səˈræmɪk/</span></span></div>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage-caption"><span class="zh">机加工后</span><span class="en">Machined Surface <span class="ipa">/məˈʃiːnd ˈsɜrfɪs/</span></span></div>
+              <div class="stack">
+                <div class="base"></div>
+                <div class="base-copy"><span class="zh">铝基</span><span class="en">Al Base <span class="ipa">/ˈæləˌmɪnəm beɪs/</span></span></div>
+                <div class="bond"></div>
+                <div class="ceramic"><span class="zh">旧陶瓷</span><span class="en">Old Ceramic <span class="ipa">/oʊld səˈræmɪk/</span></span></div>
+                <div class="finish-strip"></div>
+              </div>
+            </div>
+          </div>
+          <div class="main-tech"><span class="zh">主要技术</span><span class="en">(Main Tech) <span class="ipa">/meɪn tɛk/</span></span></div>
+          <ol class="steps">
+            <li><span class="step-no">①</span><span class="step-term"><span class="zh">机加工</span><span class="en">Machining <span class="ipa">/məˈʃiːnɪŋ/</span></span></span></li>
+            <li><span class="step-no">②</span><span class="step-term"><span class="zh">重新加工凹坑或凹槽</span><span class="en">Re-Dimple or Re-Groove <span class="ipa">/ˌriːˈdɪmpəl ɔːr ˌriːˈɡruːv/</span></span></span></li>
+          </ol>
+        </article>
+
+        <article class="level level-2">
+          <header class="level-head">
+            <div class="level-no">等级 2 · Lv.2</div>
+            <div class="title-zh">重新粘合</div>
+            <div class="title-en">Re-bonding <span class="ipa">/ˌriːˈbɑːndɪŋ/</span></div>
+          </header>
+          <div class="diagram">
+            <div class="stage">
+              <div class="stage-caption"><span class="zh">原有结构</span></div>
+              <div class="stack">
+                <div class="base"></div>
+                <div class="base-copy"><span class="zh">铝基</span><span class="en">Al Base <span class="ipa">/ˈæləˌmɪnəm beɪs/</span></span></div>
+                <div class="bond"></div>
+                <div class="ceramic"><span class="zh">旧陶瓷</span><span class="en">Old Ceramic <span class="ipa">/oʊld səˈræmɪk/</span></span></div>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage-caption"><span class="zh">拆离旧粘合层</span><span class="en">Old Bonding <span class="ipa">/oʊld ˈbɑːndɪŋ/</span></span></div>
+              <div class="stack bare">
+                <div class="base"></div>
+                <div class="base-copy"><span class="zh">铝基</span><span class="en">Al Base <span class="ipa">/ˈæləˌmɪnəm beɪs/</span></span></div>
+                <div class="loose-bond"></div>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage-caption"><span class="zh">重新粘合并加工</span><span class="en">New Bonding <span class="ipa">/nuː ˈbɑːndɪŋ/</span> · Machining <span class="ipa">/məˈʃiːnɪŋ/</span></span></div>
+              <div class="stack">
+                <div class="base"></div>
+                <div class="base-copy"><span class="zh">铝基</span><span class="en">Al Base <span class="ipa">/ˈæləˌmɪnəm beɪs/</span></span></div>
+                <div class="bond" style="background:#ffe100"></div>
+                <div class="ceramic"><span class="zh">旧陶瓷</span><span class="en">Old Ceramic <span class="ipa">/oʊld səˈræmɪk/</span></span></div>
+                <div class="finish-strip"></div>
+              </div>
+            </div>
+          </div>
+          <div class="main-tech"><span class="zh">主要技术</span><span class="en">(Main Tech) <span class="ipa">/meɪn tɛk/</span></span></div>
+          <ol class="steps">
+            <li><span class="step-no">①</span><span class="step-term"><span class="zh">重新粘合</span><span class="en">Re-Bonding <span class="ipa">/ˌriːˈbɑːndɪŋ/</span></span></span></li>
+            <li><span class="step-no">②</span><span class="step-term"><span class="zh">机加工</span><span class="en">Machining <span class="ipa">/məˈʃiːnɪŋ/</span></span></span></li>
+            <li><span class="step-no">③</span><span class="step-term"><span class="zh">重新加工凹坑或凹槽</span><span class="en">Re-Dimple or Re-Groove <span class="ipa">/ˌriːˈdɪmpəl ɔːr ˌriːˈɡruːv/</span></span></span></li>
+          </ol>
+        </article>
+
+        <article class="level level-3">
+          <header class="level-head">
+            <div class="level-no">等级 3 · Lv.3</div>
+            <div class="title-zh">更换新板</div>
+            <div class="title-en">Change New Plate <span class="ipa">/tʃeɪndʒ nuː pleɪt/</span></div>
+          </header>
+          <div class="diagram">
+            <div class="stage">
+              <div class="stage-caption"><span class="zh">原有结构</span></div>
+              <div class="stack">
+                <div class="base"></div>
+                <div class="base-copy"><span class="zh">铝基</span><span class="en">Al Base <span class="ipa">/ˈæləˌmɪnəm beɪs/</span></span></div>
+                <div class="bond"></div>
+                <div class="ceramic"><span class="zh">旧陶瓷</span><span class="en">Old Ceramic <span class="ipa">/oʊld səˈræmɪk/</span></span></div>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage-caption"><span class="zh">新板粘合</span><span class="en">New Plate Bonding <span class="ipa">/nuː pleɪt ˈbɑːndɪŋ/</span></span></div>
+              <div class="stack new-plate">
+                <div class="base"></div>
+                <div class="base-copy"><span class="zh">铝基</span><span class="en">Al Base <span class="ipa">/ˈæləˌmɪnəm beɪs/</span></span></div>
+                <div class="bond" style="background:#fff000"></div>
+                <div class="ceramic"><span class="zh">新陶瓷</span><span class="en">New Ceramic <span class="ipa">/nuː səˈræmɪk/</span></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="main-tech"><span class="zh">主要技术</span><span class="en">(Main Tech) <span class="ipa">/meɪn tɛk/</span></span></div>
+          <ol class="steps">
+            <li><span class="step-no">①</span><span class="step-term"><span class="zh">新板粘合</span><span class="en">New Plate Bonding <span class="ipa">/nuː pleɪt ˈbɑːndɪŋ/</span></span></span></li>
+            <li><span class="step-no">②</span><span class="step-term"><span class="zh">机加工</span><span class="en">Machining <span class="ipa">/məˈʃiːnɪŋ/</span></span></span></li>
+          </ol>
+        </article>
+
+        <article class="level level-4">
+          <header class="level-head">
+            <div class="level-no">等级 4 · Lv.4</div>
+            <div class="title-zh">更换金属加热器</div>
+            <div class="title-en">Change Metal Heater <span class="ipa">/tʃeɪndʒ ˈmɛtəl ˈhitər/</span></div>
+          </header>
+          <div class="diagram">
+            <div class="stage">
+              <div class="stage-caption"><span class="zh">原有结构 · 旧加热器</span><span class="en">Old Heater <span class="ipa">/oʊld ˈhitər/</span></span></div>
+              <div class="stack has-heater">
+                <div class="base"></div>
+                <div class="base-copy"><span class="zh">铝基</span><span class="en">Al Base <span class="ipa">/ˈæləˌmɪnəm beɪs/</span></span></div>
+                <div class="bond bond-bottom"></div>
+                <div class="heater"></div>
+                <div class="bond bond-top"></div>
+                <div class="ceramic"><span class="zh">旧陶瓷</span><span class="en">Old Ceramic <span class="ipa">/oʊld səˈræmɪk/</span></span></div>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage-caption"><span class="zh">更换后 · 新加热器</span><span class="en">New Ceramic <span class="ipa">/nuː səˈræmɪk/</span> · New Heater <span class="ipa">/nuː ˈhitər/</span></span></div>
+              <div class="stack has-heater new-plate">
+                <div class="base"></div>
+                <div class="base-copy"><span class="zh">铝基</span><span class="en">Al Base <span class="ipa">/ˈæləˌmɪnəm beɪs/</span></span></div>
+                <div class="bond bond-bottom"></div>
+                <div class="heater"></div>
+                <div class="bond bond-top"></div>
+                <div class="ceramic"><span class="zh">新陶瓷</span><span class="en">New Ceramic <span class="ipa">/nuː səˈræmɪk/</span></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="main-tech"><span class="zh">主要技术</span><span class="en">(Main Tech) <span class="ipa">/meɪn tɛk/</span></span></div>
+          <ol class="steps">
+            <li><span class="step-no">①</span><span class="step-term"><span class="zh">新金属加热器粘合</span><span class="en">New Metal Heater Bonding <span class="ipa">/nuː ˈmɛtəl ˈhitər ˈbɑːndɪŋ/</span></span></span></li>
+            <li><span class="step-no">②</span><span class="step-term"><span class="zh">机加工</span><span class="en">Machining <span class="ipa">/məˈʃiːnɪŋ/</span></span></span></li>
+            <li><span class="step-no">③</span><span class="step-term"><span class="zh">新板粘合</span><span class="en">New Plate Bonding <span class="ipa">/nuː pleɪt ˈbɑːndɪŋ/</span></span></span></li>
+          </ol>
+        </article>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-label">
+        <span class="zh">技术等级示意图</span>
+        <span class="en">Technical Repair Levels · /ˈtɛknɪkəl rɪˈpɛr ˈlɛvəlz/ · IPA (AmE)</span>
+      </div>
+      <div class="chevrons" aria-hidden="true"></div>
+    </footer>
+  </div>
+</body>
+</html>

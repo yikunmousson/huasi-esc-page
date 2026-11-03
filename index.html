@@ -101,6 +101,12 @@
     box-shadow:var(--shadow);overflow:hidden;background:#dce4ea;
   }
   .embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  /* 内嵌「技术等级」页：按固定设计视口等比缩放，保持四栏版式不变 */
+  .embed-levels{aspect-ratio:auto;height:650px;background:var(--bg)}
+  .embed-levels iframe{
+    inset:0 auto auto 0;width:1440px;height:900px;
+    transform-origin:0 0;
+  }
   figcaption{margin-top:10px;font-size:13px;color:var(--muted);text-align:center}
   figcaption .en{display:block;font-size:12px}
   figcaption .ipa{display:block;font-size:11px;font-family:Georgia,serif;font-style:italic}
@@ -295,8 +301,10 @@
 
   <h3 class="block-title">各级维修工艺 <span class="en">Repair Process by Level (Lv.1 – Lv.4)</span><span class="ipa">/ˈprəʊses/</span></h3>
   <figure>
-    <img src="assets/page-08.jpg" alt="Lv.1–Lv.4 维修流程示意">
-    <figcaption>核心工艺（Main Tech）：<span class="zh">机械加工</span><span class="en">Machining</span><span class="ipa">/məˈʃiːnɪŋ/</span> · <span class="zh">重新成型凹点 / 沟槽</span><span class="en">Re-Dimple or Re-Groove</span><span class="ipa">/ˌriː ˈdɪmpl ɔː ˌriː ˈɡruːv/</span> · <span class="zh">重新粘接</span><span class="en">Re-Bonding</span><span class="ipa">/ˌriː ˈbɒndɪŋ/</span> · <span class="zh">新盘粘接</span><span class="en">New Plate Bonding</span><span class="ipa">/njuː pleɪt ˈbɒndɪŋ/</span> · <span class="zh">新金属加热器粘接</span><span class="en">New Metal Heater Bonding</span><span class="ipa">/njuː ˈmetl ˈhiːtə ˈbɒndɪŋ/</span></figcaption>
+    <div class="embed-wrap embed-levels">
+      <iframe src="technical-levels/index.html" title="技术等级示意图（Lv.1 – Lv.4，中英双语）" loading="lazy"></iframe>
+    </div>
+    <figcaption>各级维修工艺（Lv.1 – Lv.4）<span class="en">Technical Repair Levels — 表面处理 Surface Treatment /ˈsɜːfɪs ˈtriːtmənt/ · 重新粘接 Re-bonding /ˌriː ˈbɒndɪŋ/ · 更换新盘 Change New Plate /tʃeɪndʒ njuː pleɪt/ · 更换金属加热器 Change Metal Heater /tʃeɪndʒ ˈmetl ˈhiːtə/</span></figcaption>
   </figure>
 
   <h3 class="block-title">机型 / 料号维修能力表（一）<span class="en">Repair Capability — LAM</span><span class="ipa">/pɑːt ˈnʌmbə/</span></h3>
@@ -690,5 +698,24 @@
 </div>
 
 </main>
+<script>
+/* 内嵌页等比缩放：按 1440×900 设计视口适配容器宽度，版式保持不变 */
+(function(){
+  var DW = 1440, DH = 900;
+  function fit(){
+    document.querySelectorAll('.embed-levels').forEach(function(wrap){
+      var w = wrap.getBoundingClientRect().width;
+      if(!w) return;
+      var scale = Math.min(1, w / DW);
+      var frame = wrap.querySelector('iframe');
+      if(frame) frame.style.transform = 'scale(' + scale + ')';
+      wrap.style.height = (DH * scale) + 'px';
+    });
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  fit();
+})();
+</script>
 </body>
 </html>
