@@ -13,7 +13,7 @@
       --panel: #ffffff;
       --footer-blue: #0e5aa7;
       --footer-dark: #123f6e;
-      --page-pad: clamp(14px, 2.4vw, 42px);
+      --page-pad: clamp(10px, 1.4vw, 24px);
       --footer-h: clamp(54px, 8.5vh, 92px);
     }
 
@@ -44,11 +44,11 @@
 
     .board {
       width: min(100%, 1520px);
-      height: min(82svh, calc(100svh - var(--footer-h) - 24px));
+      height: min(88svh, calc(100svh - var(--footer-h) - 20px));
       min-height: 0;
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: clamp(10px, 1.55vw, 24px);
+      gap: clamp(8px, 1.1vw, 18px);
     }
 
     .level {

@@ -101,8 +101,11 @@
     box-shadow:var(--shadow);overflow:hidden;background:#dce4ea;
   }
   .embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-  /* 内嵌「技术等级」页：按固定设计视口等比缩放，保持四栏版式不变 */
-  .embed-levels{aspect-ratio:auto;height:650px;background:var(--bg)}
+  /* 内嵌「技术等级」页：无外框，按固定设计视口等比缩放，保持四栏版式不变 */
+  .embed-levels{
+    aspect-ratio:auto;height:650px;
+    border:0;border-radius:0;box-shadow:none;background:transparent;overflow:hidden;
+  }
   .embed-levels iframe{
     inset:0 auto auto 0;width:1440px;height:900px;
     transform-origin:0 0;
